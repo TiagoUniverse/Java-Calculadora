@@ -14,11 +14,17 @@ public class Main {
         escolha = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Escolha o primeiro número: ");
-        numero1 = scanner.nextDouble();
+        if (escolha != 0) {
 
-        System.out.println("Escolha o segundo número: ");
-        numero2 = scanner.nextDouble();
+            System.out.println("Escolha o primeiro número: ");
+            numero1 = scanner.nextDouble();
+
+            System.out.println("Escolha o segundo número: ");
+            numero2 = scanner.nextDouble();
+        } else {
+            numero1 = 0;
+            numero2 = 0;
+        }
 
         Calculadora calculadora = new Calculadora(numero1, numero2);
 
@@ -44,11 +50,16 @@ public class Main {
             case 4:
                 calculadora.divisao(calculadora.getNumero1(), calculadora.getNumero2());
                 break;
+            case 0:
+                System.out.println("Fechando o programa. Obrigado!");
+                break;
             default:
                 System.out.println("Erro na escolha de opções.");
                 break;
         }
-        System.out.println("Resultado: " + calculadora.obterResultado());
+        if (escolha != 0) {
+            System.out.println("Resultado: " + calculadora.obterResultado());
+        }
     }
 
     private static void exibirMenu() {
@@ -60,6 +71,7 @@ public class Main {
         System.out.println("2- Subtração");
         System.out.println("3- Multiplicação");
         System.out.println("4- Divisão");
+        System.out.println("0 - Sair do programa");
         System.out.println("----------------------------");
     }
 }
